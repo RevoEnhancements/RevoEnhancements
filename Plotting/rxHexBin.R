@@ -46,16 +46,8 @@ rxHexBin <- function (formula, data, shape = 1, xbins = 30, ...) {
 	return(resHexBin)
 }
 
-
-
-
-
-
 # Load the Airlines Data
-BigAir.Dir <- "C:/Users/Derek Norton/Documents/Revolution/Revo Demos"
 working.file <- file.path(rxGetOption("sampleDataDir"),"AirlineDemoSmall.xdf")
-working.file <- file.path(BigAir.Dir,"AirlineData87to08.xdf")
-
 
 require(RevoScaleR)
 require(hexbin)
@@ -72,26 +64,6 @@ ggbin <- data.frame(
 	density = bin1@count / sum(bin1@count, na.rm=TRUE)
 	)
 p2 <- ggplot(data = ggbin, aes(x, y, fill = count))
-p2 + geom_hex(stat="identity")
-
-a <- rxCor( ~ Year + Month + DayofMonth + DayOfWeek + 
-  DepTime + CRSDepTime + ArrTime + CRSArrTime + 
-  ActualElapsedTime + CRSElapsedTime + DepDelay + 
-  Distance + TaxiIn + TaxiOut + CancellationCode + 
-  Diverted_Pred + Late, working.file, blocksPerRead = 20)
-
-bin1 <- rxHexBin(ArrDelay ~ CRSDepTime, working.file, xbins = 50, blocksPerRead = 20)
-plot(bin1, lcex=.5, border = TRUE, colramp = BTC, legend = 1, colorcut = seq(0, 1, length = 10))
-
-require(ggplot2)
-ggbin <- data.frame(
-	hcell2xy(bin1), 
-	count = bin1@count, 
-	density = bin1@count / sum(bin1@count, na.rm=TRUE)
-	)
-p2 <- ggplot(data = ggbin, aes(x, y, fill = count))
 p2 + geom_hex(stat="identity", nbins = 100) + guides(fill = guide_colorbar(ticks = FALSE, label.theme = element_text(size = 8, angle = 0))) + labs(x = "CRSDepTime", y = "ArrDelay")
 
-m <- ggplot(movies, aes(x=rating))
-m+ geom_density(size = 1)
-m + geom_histogram(colour = "black", fill = NA, binwidth = 0.5, size = 1)
+
