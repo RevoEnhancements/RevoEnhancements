@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="RTarget" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{aa8c4d84-5de1-4787-a1ba-887eab5438ef}</ProjectGuid>
+    <AssemblyName>RevoEnhancementsProject</AssemblyName>
+    <Name>RevoEnhancementsProject</Name>
+    <RootNamespace>RevoEnhancementsProject</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Compatibility\" />
+    <Folder Include="Data Manipulation\" />
+    <Folder Include="Data Mining\" />
+    <Folder Include="Modeling\" />
+    <Folder Include="Plotting\" />
+    <Folder Include="Scoring\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Compatibility\formulaExpand.R">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Compatibility\range2formula.R">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Data Mining\rxDiscretize.R">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Data Mining\rxNaiveBayes.R">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Data Mining\rxSample.R">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Data Mining\rxTreeDiscretize.R">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Modeling\rxKS.R">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Modeling\rxTTest.R">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Plotting\rxBoxPlot.R">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Plotting\rxHexBin.R">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Target Name="RTarget">
+    <Message Text="Executing R script" />
+  </Target>
+</Project>
