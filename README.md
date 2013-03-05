@@ -18,8 +18,8 @@ Area of enhancement are:
 * CRAN R Compatability
 * Big Data Graphics
 * Big Data Mining
-* Discretization
-* Variable Importance / Selection
-* Models
-* Scoring
+ * Discretization
+ * Variable Importance / Selection
+ * Models
+ * Scoring
 * ...
