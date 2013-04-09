@@ -1,4 +1,6 @@
 rxHexBin <- function (formula, data, shape = 1, xbins = 30, ...) {
+
+  require(hexbin)
   if (length(formula) != 3) stop("Two Variables Are Required in the Formula")
   call <- match.call()
 	## Function for creating/updating hexbin objects.
@@ -27,7 +29,7 @@ rxHexBin <- function (formula, data, shape = 1, xbins = 30, ...) {
 	y <- plotVars[1]
 	xbnds <- c(dataInfo$varInfo[[x]][["low"]], dataInfo$varInfo[[x]][["high"]])
   ybnds <- c(dataInfo$varInfo[[y]][["low"]], dataInfo$varInfo[[y]][["high"]])
-  startHex <- hexbin(x = 1, y = 1, xbins = xbins, shape = shape,
+  startHex <- hexbin(x = xbnds[1], y = ybnds[1], xbins = xbins, shape = shape,
                       xbnds = xbnds, ybnds = ybnds, xlab = x, ylab = y)
   startHex@count <- NA_integer_
   startHex@cell <- NA_integer_
