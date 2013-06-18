@@ -1,5 +1,33 @@
-# Function to create a boxplot from an XDF file.
+#
+#  RevoEnhancements/R/rxBoxPlot.R by Derek Norton andAndrie de Vries  Copyright (C) 2012-2013
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 or 3 of the License
+#  (at your option).
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  A copy of the GNU General Public License is available at
+#  http://www.r-project.org/Licenses/
+#
+#
 
+
+#' Function to create a boxplot from an XDF file.
+#' 
+#' @param x ???
+#' @param data xdf file
+#' @param coef ???
+#' @param do.conf ???
+#' @param do.out ???
+#' @param blocksPerRead Passed to \code{\link[RevoScaleR]{rxQuantile}}
+#' @param reportProgress Passed to \code{\link[RevoScaleR]{rxQuantile}}
+#' @keywords internal
+#' @seealso rxBoxPlot
 rxBoxPlot.stats <- function(x, data, coef = 1.5, do.conf = TRUE, do.out = TRUE,
               blocksPerRead = rxGetOption("blocksPerRead"),
               reportProgress = rxGetOption("reportProgress")){
@@ -32,6 +60,35 @@ rxBoxPlot.stats <- function(x, data, coef = 1.5, do.conf = TRUE, do.out = TRUE,
   list(stats = stats, n = n, conf = conf, out = if (do.out) out else numeric())
 }
 
+#' Function to create a boxplot from an XDF file.
+#' 
+#' @param formula ???
+#' @param data xdf file
+#' @param rowSelection ???
+#' @param blocksPerRead ???
+#' @param title ???
+#' @param subtitle ???
+#' @param xTitle ???
+#' @param yTitle ???
+#' @param boxFillColor ???
+#' @param boxOutlineColor ???
+#' @param outlierColor ???
+#' @param outlierStyle ???
+#' @param outlierSize ???
+#' @param outlierBackground ???
+#' @param plotAreaColor ???
+#' @param gridColor ???
+#' @param gridLineWidth ???
+#' @param gridLineStyle ???
+#' @param whiskerLineType ???
+#' @param whiskerLineWidth ???
+#' @param whiskerLineColor ???
+#' @param medianLineType ???
+#' @param medianLineWidth ???
+#' @param medianLineColor ???
+#' @param reportProgress ???
+#' @export
+#' @family plot functions
 rxBoxPlot <- function(formula, data, rowSelection = NULL, 
               blocksPerRead = rxGetOption("blocksPerRead"),
               title = NULL, subtitle = NULL, xTitle = NULL, yTitle = NULL,
