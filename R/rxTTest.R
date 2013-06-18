@@ -1,5 +1,61 @@
-# Function to carry out a student's t test on an xdf file
+#
+#  RevoEnhancements/R/rxTTtest.R by Derek Norton and Andrie de Vries  Copyright (C) 2012-2013
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 or 3 of the License
+#  (at your option).
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  A copy of the GNU General Public License is available at
+#  http://www.r-project.org/Licenses/
+#
+#
 
+
+#' Function to carry out a student's t test on an xdf file
+#' 
+#' @param formula ???
+#' @param data ???
+#' @param alternative ???
+#' @param mu ???
+#' @param var.equal ???
+#' @param conf.level ???
+#' @param ... ???
+#' @export
+#' @family Modelling functions
+#' @examples
+#' # Generate Data and test differences
+#' library(RevoScaleR)
+#' xdfFile <- "myTTestFile.xdf"
+#' x <- data.frame(x = rnorm(1000, mean = -1, sd = 1), y = rnorm(1000, mean = 6, sd = 3), group = factor(rbinom(1000, 1, .6)))
+#' rxDataStep(inData = x, outFile = xdfFile, overwrite = TRUE)
+#'
+#' # One-Sample t-test
+#' t.test(x$x)
+#' rxTTest(~ x, data = xdfFile)
+#'
+#' # Two-Sample t-test
+#' t.test(x$x, x$y)
+#' rxTTest(~ x + y, data = xdfFile)
+#'
+#' # Grouped Two-Sample t-test
+#' t.test(x ~ group, data = x)
+#' rxTTest(x ~ group, data = xdfFile)
+#'
+#' # Paired t-test
+#' t.test(x$x, x$y, paired = TRUE)
+#' rxTTest(~ I(x - y), data = xdfFile)
+#'
+#' # Grouped Two-Sample Paired t-test
+#' # Not available in t.test()
+#' rxTTest(I(x - y) ~ group, data = xdfFile)
+#'
+# unlink(xdfFile)
 rxTTest <- function(formula, data, alternative = c("two.sided", "less", "greater"),
        mu = 0, var.equal = FALSE, conf.level = 0.95, ...){
   alternative <- match.arg(alternative)
@@ -125,30 +181,3 @@ rxTTest <- function(formula, data, alternative = c("two.sided", "less", "greater
   return(rval)
 }
 
-## Examples
-# Generate Data and test differences
-# xdfFile <- "myTTestFile.xdf"
-# x <- data.frame(x = rnorm(1000, mean = -1, sd = 1), y = rnorm(1000, mean = 6, sd = 3), group = factor(rbinom(1000, 1, .6)))
-# rxDataStep(inData = x, outFile = xdfFile, overwrite = TRUE)
-
-# # One-Sample t-test
-# t.test(x$x)
-# rxTTest(~ x, data = xdfFile)
-
-# # Two-Sample t-test
-# t.test(x$x, x$y)
-# rxTTest(~ x + y, data = xdfFile)
-
-# # Grouped Two-Sample t-test
-# t.test(x ~ group, data = x)
-# rxTTest(x ~ group, data = xdfFile)
-
-# # Paired t-test
-# t.test(x$x, x$y, paired = TRUE)
-# rxTTest(~ I(x - y), data = xdfFile)
-
-# # Grouped Two-Sample Paired t-test
-# # Not available in t.test()
-# rxTTest(I(x - y) ~ group, data = xdfFile)
-
-# unlink(xdfFile)

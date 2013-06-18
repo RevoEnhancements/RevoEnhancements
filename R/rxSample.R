@@ -1,5 +1,33 @@
-# Function to sample, with or without replacement, from an XDF to a data frame.
+#
+#  RevoEnhancements/R/sample.R by Derek Norton andAndrie de Vries  Copyright (C) 2012-2013
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 or 3 of the License
+#  (at your option).
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  A copy of the GNU General Public License is available at
+#  http://www.r-project.org/Licenses/
+#
+#
 
+#' Function to sample, with or without replacement, from an XDF to a data frame.
+#' 
+#' @param data xdf File
+#' @param size ???
+#' @param replace ???
+#' @export
+#' @family Data mining functions
+#' @examples
+#' library(RevoScaleR)
+#' xdfFile <- file.path(rxGetOption("sampleDataDir"), "CensusWorkers.xdf")
+#' df <- rxSample2Df(xdfFile , size = 10000, replace = FALSE)
+#' df <- rxSample2Df(xdfFile , size = 10000, replace = TRUE)
 rxSample2Df <- function(data, size, replace = FALSE) {
   extraRows <- 100
   dataInfo <- rxGetInfo(data, getVarInfo = TRUE)
@@ -49,7 +77,3 @@ rxSample2Df <- function(data, size, replace = FALSE) {
   return(ret)
 }
 
-## Examples
-# xdfFile <- file.path(rxGetOption("sampleDataDir"), "CensusWorkers.xdf")
-# df <- rxSample2Df(xdfFile , size = 10000, replace = FALSE)
-# df <- rxSample2Df(xdfFile , size = 10000, replace = TRUE)
