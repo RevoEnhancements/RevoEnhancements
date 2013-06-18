@@ -1,0 +1,33 @@
+Package: RevoEnhancements
+Author: Derek McRae Norton, Andrie de Vries
+Authors@R: c(person("Andrie", "de Vries", role=c("aut"),
+    email="andrie@revolutionanalytics.com"), person(c("Derek", "McRae"),
+    "Norton", role = c("aut", "cre"),
+    email="derek.norton@revolutionanalytics.com"))
+License: Apache License (== 2.0)
+Title: Selected enhancements to Revolution Analytics RevoScaleR
+Copyright: Revolution Analytics
+LazyData: true
+LazyLoad: true
+Description: This is a set of tools to enchance and expand RevoScaleR.
+Version: 0.0-01
+URL: https://github.com/RevoEnchancements/RevoEnhancements
+Imports:
+    RevoScaleR,
+    hexbin
+Suggests:
+    ggplot2,
+    mlbench,
+    e1071
+Date: 2013-06-18
+Collate:
+    'RevoEnhancements-package.R'
+    'formulaExpand.R'
+    'range2formula.R'
+    'rxBoxPlot.R'
+    'rxDiscretize.R'
+    'rxHexBin.R'
+    'rxTreeDiscretize.R'
+    'rxTTest.R'
+    'rxKS.R'
+    'rxSample.R'
