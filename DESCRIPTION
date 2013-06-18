@@ -1,7 +1,7 @@
 Package: RevoEnhancements
-Author: Derek McRae Norton, Andrie de Vries
+Author: Derek McCrae Norton, Andrie de Vries
 Authors@R: c(person("Andrie", "de Vries", role=c("aut"),
-    email="andrie@revolutionanalytics.com"), person(c("Derek", "McRae"),
+    email="andrie@revolutionanalytics.com"), person(c("Derek", "McCrae"),
     "Norton", role = c("aut", "cre"),
     email="derek.norton@revolutionanalytics.com"))
 License: Apache License (== 2.0)

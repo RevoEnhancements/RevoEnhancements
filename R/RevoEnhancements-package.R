@@ -1,5 +1,5 @@
 #
-#  RevoEnhancements/R/RevoEnhancements-packages by Derek Norton andAndrie de Vries  Copyright (C) 2012-2013
+#  RevoEnhancements/R/RevoEnhancements-packages by Derek Norton and Andrie de Vries  Copyright (C) 2012-2013
 #
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
