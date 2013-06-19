@@ -17,9 +17,8 @@ Imports:
     hexbin
 Suggests:
     ggplot2,
-    mlbench,
-    e1071
-Date: 2013-06-18
+    mlbench
+Date: 2013-06-19
 Collate:
     'RevoEnhancements-package.R'
     'formulaExpand.R'
