@@ -1,18 +1,38 @@
-RevoEnhancements
-================
-This repository is for adding functionality to RevoScaleR. All functions require, and are enhancements to, [Revolution R Enterprise](http://www.revolutionanalytics.com/products/revolution-enterprise.php).
+RevoEnhancements is an R package that adds functionality and utility functions to RevoScaleR. All functions require, and are enhancements to, [Revolution R Enterprise](http://www.revolutionanalytics.com/products/revolution-enterprise.php).
 
-Each file is its own function, but some functions do rely on each other... I am working to document this.
+Additional functionality
+------------------------
 
-It is also a goal to put this into a `RevoEnhancements` package at some point so the dependencies are taken care of, however for now it is available as use what you want.
+Base R Compatability
+* Functions to expand model formulas, e.g. expanding y~. into all dependent variables in the XDF
 
-Area of enhancement are:
-------------------------------
-* CRAN R Compatability
-* Big Data Graphics
-* Big Data Mining
- * Discretization
- * Variable Importance / Selection
- * Models
- * Scoring
-* ...
+Summarising Big Data for easy graphics visualization
+* rxHexBin - hexagonal binning
+* rxBoxPlot
+
+
+Big Data Mining
+* Discretization and tree discretization
+* Sampling from an XDF into a data frame
+
+Statistical testing
+* KS statistic
+* t-test
+
+Installation
+------------
+
+You can use the `devtools` package to install `RevoEnhancements` directly from github.
+
+    library(devtools)
+    install_github("RevoEnhancements", "RevoEnhancements")
+
+`RevoEnhancements` imports some packages from CRAN, e.g. package `hexbin`. To install dependencies from CRAN, use:
+
+    install.packages("hexbin")
+    
+To demonstrate how to use the code, we also use some examples with `ggplot2` and `mlbench`.  To install these suggested packages, use:
+
+    install.packages(c("ggplot2", "mlbench"))
+
+
