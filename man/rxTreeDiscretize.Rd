@@ -26,7 +26,7 @@
   Function to discretize continous variables using a tree.
 }
 \examples{
-## Examples
+library(RevoScaleR)
 claimsXdf <- file.path(rxGetOption("sampleDataDir"),"claims.xdf")
 claimsXdf <- RxXdfData(claimsXdf)
 discTransforms <- rxTreeDiscretize(type ~ cost + number, data = claimsXdf)
