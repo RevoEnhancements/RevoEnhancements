@@ -25,6 +25,7 @@ Collate:
     'range2formula.R'
     'rxBoxPlot.R'
     'rxDiscretize.R'
+    'rxF1.R'
     'rxHexBin.R'
     'rxTreeDiscretize.R'
     'rxTTest.R'
