@@ -37,7 +37,7 @@
 #'                dat)
 #' prd <- rxPredict(fit, dat)$Virg_Pred
 #' cmb <- data.frame(Virg=dat$Virg, Pred=prd)
-#' rxF1("Virg", "Pred", cmb)
+#' rxF1score("Virg", "Pred", cmb)
 #' 
 #' ## Demonstrates calculation on xdf file
 #' 
@@ -49,15 +49,15 @@
 #' rxPredict(fit, data=dataFile, outData=dataFile)
 #' rxGetInfo(dataFile)
 #' rxGetVarInfo(dataFile)
-#' rxF1("Virg", "Virg_Pred", dataFile)
+#' rxF1score("Virg", "Virg_Pred", dataFile)
 #' file.remove(dataFile)  
 
-rxF1 <- function (actualVarName, predVarName, data, blocksPerRead = 1, 
+rxF1score <- function (actualVarName, predVarName, data, blocksPerRead = 1, 
                   reportProgress = rxGetOption("reportProgress")) 
 {
-#   .rxGet <- function() {}
-#   .rxSet <- function() {}
-#   rm(.rxGet, .rxSet)
+  .rxGet <- function() {}
+  .rxSet <- function() {}
+  rm(.rxGet, .rxSet)
   f1BlockCompute <- function(datalist){
     x <- datalist[[actualVarName]]
     p <- datalist[[predVarName]]
