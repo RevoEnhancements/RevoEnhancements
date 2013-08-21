@@ -42,15 +42,28 @@ rxSample2Df <- function(data, size, replace = FALSE) {
     stop("'size' must be greater than zero")
   }
   if (is.data.frame(data)) {
-    mySamp <- sample.int(n = dataSize, size = size, replace = ifelse(size > dataSize, TRUE, replace))
+    mySamp <- sample.int(n = dataSize, size = size, 
+                         replace = ifelse(size > dataSize, TRUE, replace))
     return(data[mySamp,])
   }
   createRandomSample <- function(dataList) {
+    # Trick to pass R CMD check: create and remove variables without binding
+    .rxStartRow <- .rxChunkNum <- function(){}
+    rm(.rxStartRow, .rxChunkNum)
+    zP <- character()
+    rm(zP)
+    
     numRows <- length(dataList[[1]])
     dataList$.rxRowSelection <- as.logical(rbinom(numRows,1, zP))
     return(dataList)
   }
   createRandomSampleReplace <- function(dataList) {
+    # Trick to pass R CMD check: create and remove variables without binding
+    .rxGet <- .rxSet <- .rxStartRow <- .rxChunkNum <- function() {}
+    rm(.rxGet, .rxSet, .rxStartRow, .rxChunkNum)
+    zP <- character()
+    rm(zP)
+    
     numRows <- length(dataList[[1]])
     rowNum <- seq_len(numRows) + .rxStartRow - 1 
     rows <- sample[sample %in% rowNum]
