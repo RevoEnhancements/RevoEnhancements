@@ -22,7 +22,14 @@
   \item{blocksPerRead}{number of blocks to read for each
   chunk of data read from the data source.}
 
-  \item{reportProgress}{Passed to \code{\link{rxDataStep}}}
+  \item{reportProgress}{Passed to
+  \code{\link[RevoScaleR]{rxDataStep}}}
+}
+\value{
+  A list with elements: \describe{
+  \item{precision}{Precision} \item{recall}{Recall}
+  \item{trueNegRate}{True negative rate}
+  \item{accuracy}{Accuracy} \item{F1}{F1 score} }
 }
 \description{
   Calculates machine learning statistics, including F1,
