@@ -7,9 +7,13 @@
 \arguments{
   \item{data}{xdf File}
 
-  \item{size}{???}
+  \item{size}{Number of rows to sample}
 
-  \item{replace}{???}
+  \item{replace}{If TRUE, samples with replacement.  Passed
+  to \code{\link{sample.int}}}
+}
+\value{
+  A data frame
 }
 \description{
   Function to sample, with or without replacement, from an
@@ -18,8 +22,8 @@
 \examples{
 library(RevoScaleR)
 xdfFile <- file.path(rxGetOption("sampleDataDir"), "CensusWorkers.xdf")
-df <- rxSample2Df(xdfFile , size = 10000, replace = FALSE)
-df <- rxSample2Df(xdfFile , size = 10000, replace = TRUE)
+df <- rxSample2Df(xdfFile, size = 10000, replace = FALSE)
+df <- rxSample2Df(xdfFile, size = 10000, replace = TRUE)
 }
 \seealso{
   Other Data mining functions: \code{\link{rxDiscretize}},
