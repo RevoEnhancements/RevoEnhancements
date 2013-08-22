@@ -1,8 +1,9 @@
-\name{rxF1}
-\alias{rxF1}
+\name{rxF1score}
+\alias{rxF1score}
 \title{Calculates machine learning statistics, including F1, accuracy and recall.}
 \usage{
-  rxF1(actualVarName, predVarName, data, blocksPerRead = 1,
+  rxF1score(actualVarName, predVarName, data,
+    blocksPerRead = 1,
     reportProgress = rxGetOption("reportProgress"))
 }
 \arguments{
@@ -21,7 +22,14 @@
   \item{blocksPerRead}{number of blocks to read for each
   chunk of data read from the data source.}
 
-  \item{reportProgress}{Passed to \code{\link{rxDataStep}}}
+  \item{reportProgress}{Passed to
+  \code{\link[RevoScaleR]{rxDataStep}}}
+}
+\value{
+  A list with elements: \describe{
+  \item{precision}{Precision} \item{recall}{Recall}
+  \item{trueNegRate}{True negative rate}
+  \item{accuracy}{Accuracy} \item{F1}{F1 score} }
 }
 \description{
   Calculates machine learning statistics, including F1,
@@ -37,7 +45,7 @@ fit <- rxLogit(Virg ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,
                dat)
 prd <- rxPredict(fit, dat)$Virg_Pred
 cmb <- data.frame(Virg=dat$Virg, Pred=prd)
-rxF1("Virg", "Pred", cmb)
+rxF1score("Virg", "Pred", cmb)
 
 ## Demonstrates calculation on xdf file
 
@@ -49,7 +57,7 @@ fit <- rxLogit(Virg ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width,
 rxPredict(fit, data=dataFile, outData=dataFile)
 rxGetInfo(dataFile)
 rxGetVarInfo(dataFile)
-rxF1("Virg", "Virg_Pred", dataFile)
+rxF1score("Virg", "Virg_Pred", dataFile)
 file.remove(dataFile)
 }
 \seealso{
