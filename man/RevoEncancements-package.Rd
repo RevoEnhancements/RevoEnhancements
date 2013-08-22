@@ -31,7 +31,7 @@
   \item{Variable Importance / Selection} \item{Models}
   \item{Scoring} \item{...} }
 
-  Some function you might find useful:
+  Some functions you might find useful:
 
   Compatibility and utility functions: \itemize{
   \item{formulaExpand.R} \item{range2formula.R} }
@@ -42,7 +42,8 @@
   \item{rxHexBin} }
 
   Data mining: \itemize{ \item{rxDiscretize}
-  \item{rxSample} \item{rxTreeDiscretize} }
+  \item{rxSample} \item{rxTreeDiscretize} \item{rxF1score}
+  }
 }
 \author{
   Derek Norton \email{derek.norton@revolutionanalytics.com}

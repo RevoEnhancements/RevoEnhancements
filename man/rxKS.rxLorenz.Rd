@@ -2,7 +2,7 @@
 \alias{rxKS.rxLorenz}
 \title{Function to calculate the KS Statistic.}
 \usage{
-  rxKS.rxLorenz(x)
+  \method{rxKS}{rxLorenz} (x)
 }
 \arguments{
   \item{x}{???}

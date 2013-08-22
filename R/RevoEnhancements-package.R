@@ -56,7 +56,7 @@
 #' \item{...}
 #' }
 #'
-#' Some function you might find useful:
+#' Some functions you might find useful:
 #' 
 #' Compatibility and utility functions:
 #' \itemize{
@@ -81,6 +81,7 @@
 #' \item{rxDiscretize}
 #' \item{rxSample}
 #' \item{rxTreeDiscretize}
+#' \item{rxF1score}
 #' }
 
 

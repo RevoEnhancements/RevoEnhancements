@@ -4,16 +4,17 @@ Additional functionality
 ------------------------
 
 Base R Compatability
-* Functions to expand model formulas, e.g. expanding y~. into all dependent variables in the XDF
+* Functions to expand model formulas, e.g. expanding `y~.` into all dependent variables in the XDF file
 
 Summarising Big Data for easy graphics visualization
-* rxHexBin - hexagonal binning
-* rxBoxPlot
+* `rxHexBin` - hexagonal binning
+* `rxBoxPlot`
 
 
 Big Data Mining
 * Discretization and tree discretization
 * Sampling from an XDF into a data frame
+* Calculating test statistics, e.g. accuracy, recall and F1-score
 
 Statistical testing
 * KS statistic

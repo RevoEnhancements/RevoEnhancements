@@ -50,10 +50,17 @@
 #'   guides(fill = guide_colorbar(ticks = FALSE, label.theme = element_text(size = 8, angle = 0))) + 
 #'   labs(x = "CRSDepTime", y = "ArrDelay")
 rxHexBin <- function (formula, data, shape = 1, xbins = 30, ...) {
+  
   if (length(formula) != 3) stop("Two Variables Are Required in the Formula")
   call <- match.call()
 	## Function for creating/updating hexbin objects.
   hexBinTransform <- function(dataList) {
+    # Trick to pass R CMD check: create and remove variables without binding
+    .rxGet <- .rxSet <- function() {}
+    rm(.rxGet, .rxSet)
+    myXbnds <- myYbnds <- xvar <- yvar <- numeric()
+    rm(myXbnds, myYbnds, xvar, yvar)
+    
     hex1 <- .rxGet("hex1")
     hex2 <- hexbin(dataList[[xvar]], dataList[[yvar]], 
                     xbnds=myXbnds, ybnds=myYbnds,

@@ -27,6 +27,7 @@ rxKS <- function (x) {
 #' Function to calculate the KS Statistic.
 #' 
 #' @param x ???
+#' @method rxKS rxLorenz
 #' @export
 #' @family Modelling functions
 rxKS.rxLorenz <- function (x) {
