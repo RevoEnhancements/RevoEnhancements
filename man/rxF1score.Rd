@@ -61,7 +61,7 @@ rxF1score("Virg", "Virg_Pred", dataFile)
 file.remove(dataFile)
 }
 \seealso{
-  Other Data mining functions: \code{\link{rxDiscretize}},
-  \code{\link{rxSample2Df}}, \code{\link{rxTreeDiscretize}}
+  Other Model summary statistics: \code{\link{rxAIC}},
+  \code{\link{rxLinPredError}}
 }
 

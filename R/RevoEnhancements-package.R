@@ -42,28 +42,29 @@
 #' 
 #' Compatibility and utility functions:
 #' \itemize{
-#' \item{formulaExpand.R}
-#' \item{range2formula.R}
+#' \item{\code{\link{formulaExpand}}}
+#' \item{\code{\link{range2formula}}}
 #' }
 #' 
 #' Modeling:
 #' \itemize{
-#' \item{rxKS}
-#' \item{rxTTest}
+#' \item{\code{\link{rxKS}}}
+#' \item{\code{\link{rxTTest}}}
 #' }
 #' 
 #' Data visualisation:
 #' \itemize{
-#' \item{rxBoxPlot}
-#' \item{rxHexBin}
+#' \item{\code{\link{rxBoxPlot}}}
+#' \item{\code{\link{rxHexBin}}}
 #' }
 #' 
 #' Data mining:
 #' \itemize{
-#' \item{rxDiscretize}
-#' \item{rxSample}
-#' \item{rxTreeDiscretize}
-#' \item{rxF1score}
+#' \item{\code{\link{rxDiscretize}}}
+#' \item{\code{\link{rxSample2Df}}}
+#' \item{\code{\link{rxTreeDiscretize}}}
+#' \item{\code{\link{rxF1score}}}
+#' \item{\code{\link{rxLinPredError}}}
 #' }
 
 

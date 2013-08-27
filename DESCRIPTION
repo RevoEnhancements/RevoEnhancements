@@ -32,3 +32,5 @@ Collate:
     'rxKS.R'
     'rxSample.R'
     'rxF1score.R'
+    'rxLinPredError.R'
+    'rxAIC.R'
