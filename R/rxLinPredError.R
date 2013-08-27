@@ -1,5 +1,5 @@
 #
-# RevoEnhancements/R/rxMSWD by Chibisi Chima-Okereke
+# RevoEnhancements/R/rxLinPredError.R by Chibisi Chima-Okereke
 #
 # Copyright 2013 Revolution Analytics
 #    
@@ -16,17 +16,25 @@
 # limitations under the License.
 
 
-#' rxLinPredError Calculates MSE, MAPE, MPE, and MSWD
+#' Calculates prediction error statistics for linear regression models.
+#' 
+#' Calculates a number of error statistics, including:
+#' \describe{
+#' \item{MSE}{Mean squared error}
+#' \item{MAPE}{Mean absolute percentage erorr}
+#' \item{MPE}{Mean percentage error}
+#' \item{MSWD}{Mean squared weighted deviation}
+#' }
 #'
 #' @param actualVarName String name of the response variable.
 #' @param predVarName String name of the predicted variable.
-#' @param sWeights String name of error weights
+#' @param sWeights String name of error weights.
 #' @param data data frame, or character string containing an '.xdf' file name (with path), or RxXdfData object representing an '.xdf' file containing the actual and observed variables.
 #' @param blocksPerRead number of blocks to read for each chunk of data read from the data source.
 #' @param reportProgress Passed to \code{\link{rxDataStep}}
 #' @return returns a list of prediction measures MSE, MAPE, MPE, MSWD 
 #' @export
-#' @family Data mining functions
+#' @family Model summary statistics
 #' @examples
 #' library(RevoScaleR)
 #' 
@@ -35,12 +43,11 @@
 #' fit <- rxLinMod(Sepal.Length ~ Petal.Length + Petal.Width, data = iris)
 #' prd <- rxPredict(fit, iris)$Sepal.Length_Pred
 #' dat <- data.frame(Sepal.Length=iris$Sepal.Length, Sepal.Length_Pred=prd, Weights = rep(1, nrow(iris))/nrow(iris))
-#' rxMSWD("Sepal.Length", "Sepal.Length_Pred", "Weights", dat)
-#'
+#' rxLinPredError("Sepal.Length", "Sepal.Length_Pred", data=dat, sWeights="Weights")
+#' rxLinPredError("Sepal.Length", "Sepal.Length_Pred", data=dat)
 
-rxLinPredError <- function (actualVarName, predVarName, sWeights = NULL, data, blocksPerRead = 1,
-                    reportProgress = rxGetOption("reportProgress")) 
-{
+rxLinPredError <- function (actualVarName, predVarName, data, sWeights = NULL, blocksPerRead = 1,
+                    reportProgress = rxGetOption("reportProgress")) {
   
   .BlockCompute <- function(datalist){
     
@@ -114,4 +121,3 @@ rxLinPredError <- function (actualVarName, predVarName, sWeights = NULL, data, b
   list(MAPE = MAPE, MPE = MPE, MSE = MSE, MSWD = MSWD)
 }
 
-rxLinPredError("Sepal.Length", "Sepal.Length_Pred", data = dat)
