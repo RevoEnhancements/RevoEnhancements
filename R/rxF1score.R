@@ -35,7 +35,7 @@
 #' \item{accuracy}{Accuracy}
 #' \item{F1}{F1 score}
 #' }
-#' @family Data mining functions
+#' @family Model summary statistics
 #' @examples
 #' library(RevoScaleR)
 #' 

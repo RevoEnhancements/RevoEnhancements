@@ -27,6 +27,6 @@ df <- rxSample2Df(xdfFile, size = 10000, replace = TRUE)
 }
 \seealso{
   Other Data mining functions: \code{\link{rxDiscretize}},
-  \code{\link{rxF1score}}, \code{\link{rxTreeDiscretize}}
+  \code{\link{rxTreeDiscretize}}
 }
 
