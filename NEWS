@@ -1,0 +1,13 @@
+RevoEnhancements 0.0-03 (Release date: 27/08/2013)
+================
+  
+New functionality
+* `rxAIC()` to compute AIC score
+* `rxLinPredError()` to compute MSE, MAPE, MSE and MSWD
+
+RevoEnhancements 0.0-02 (Release date: 20/08/2013)
+================
+  
+Changes:
+* Changed `rxF1()` to `rxF1score()`
+* Added unit tests for `rxF1score()`

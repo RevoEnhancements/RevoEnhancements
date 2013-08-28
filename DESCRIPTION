@@ -10,7 +10,7 @@ Copyright: Revolution Analytics
 LazyData: true
 LazyLoad: true
 Description: This is a set of tools to enchance and expand RevoScaleR.
-Version: 0.0-02
+Version: 0.0-03
 URL: https://github.com/RevoEnchancements/RevoEnhancements
 Imports:
     RevoScaleR,
@@ -19,7 +19,7 @@ Suggests:
     ggplot2,
     mlbench,
     testthat
-Date: 2013-06-19
+Date: 2013-08-27
 Collate:
     'RevoEnhancements-package.R'
     'formulaExpand.R'
@@ -32,3 +32,5 @@ Collate:
     'rxKS.R'
     'rxSample.R'
     'rxF1score.R'
+    'rxLinPredError.R'
+    'rxAIC.R'
