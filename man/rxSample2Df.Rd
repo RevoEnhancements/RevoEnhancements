@@ -2,7 +2,8 @@
 \alias{rxSample2Df}
 \title{Function to sample, with or without replacement, from an XDF to a data frame.}
 \usage{
-  rxSample2Df(data, size, replace = FALSE)
+  rxSample2Df(data, size, replace = FALSE,
+    maxRowsByCols = 3e+06)
 }
 \arguments{
   \item{data}{xdf File}
@@ -11,6 +12,9 @@
 
   \item{replace}{If TRUE, samples with replacement.  Passed
   to \code{\link{sample.int}}}
+
+  \item{maxRowsByCols}{the maximum number of rows x columns
+  as specified by rxDataStep}
 }
 \value{
   A data frame
