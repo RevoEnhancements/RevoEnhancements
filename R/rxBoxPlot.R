@@ -132,15 +132,13 @@ rxBoxPlot <- function(formula, data, rowSelection = NULL,
   }
 }
 
-## Need to add grouping
-
-## Examples
-#claimsXdf <- file.path(rxGetOption("sampleDataDir"),"claims.xdf")
-#claimsXdf <- RxXdfData(claimsXdf)
-#x <- rxXdfToDataFrame(file = claimsXdf)
-#a1 <- boxplot.stats(x$cost)
-#b1 <- rxBoxPlot.stats("cost", claimsXdf)
-#all.equal(a1,b1) ## Won't be because rxQuantiles are not exact
-
-#a2 <- boxplot(x$cost)
-#b2 <- rxBoxPlot(~ cost, claimsXdf, title = "My Test Boxplot", subtitle = "Groups are not added yet")
+#' @examples
+#' claimsXdf <- file.path(rxGetOption("sampleDataDir"),"claims.xdf")
+#' claimsXdf <- RxXdfData(claimsXdf)
+#' x <- rxXdfToDataFrame(file = claimsXdf)
+#' a1 <- boxplot.stats(x$cost)
+#' b1 <- rxBoxPlot.stats("cost", claimsXdf)
+#' all.equal(a1,b1) ## Won't be because rxQuantiles are not exact
+#' #####
+#' a2 <- boxplot(x$cost)
+#' b2 <- rxBoxPlot(~ cost, claimsXdf, title = "My Test Boxplot", subtitle = "Groups are not added yet")

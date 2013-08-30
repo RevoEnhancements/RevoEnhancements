@@ -16,10 +16,14 @@
 # limitations under the License.
 
 
-#' Function to expand a dot (.) to represent all variables in an XDF (DF)
-#' 
-#' @param data xdf file
-#' @param formula ???
+#' Expand a . to represent all variables in an XDF (DF).
+#'
+#' This function allows the use of . (dot) expansion in functions that would 
+#' otherwise not allow it.
+#'
+#' @param formula formula to be expanded
+#' @param data XDF file or data.frame from which to create new formula
+#' @keywords expand, formula
 #' @export
 #' @family Compatibility functions
 formulaExpand <- function(formula, data){

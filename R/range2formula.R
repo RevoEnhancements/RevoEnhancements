@@ -16,10 +16,13 @@
 # limitations under the License.
 
 
-#' Function to create a formula from a range on an XDF (DF)
-#' 
-#' @param data xdf file
-#' @param range Numeric vector
+#' Create a formula from a range on an XDF (DF).
+#'
+#' This function allows the specification of a range of variable instead of a formula
+#'
+#' @param range numeric range of values to use in formula
+#' @param data XDF file or data.frame from which to create new formula
+#' @keywords range, formula
 #' @export
 #' @family Compatibility functions
 range2formula <- function(range, data){
