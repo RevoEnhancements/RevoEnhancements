@@ -24,6 +24,7 @@
 #' @export
 #' @family Model summary statistics
 #' @examples
+#' library(RevoScaleR)
 #' sampleDataDir <- rxGetOption("sampleDataDir")
 #' working.file <- file.path(sampleDataDir, "AirlineDemoSmall.xdf")
 rxAIC <- function(object, k = 2) {

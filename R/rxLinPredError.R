@@ -49,7 +49,18 @@
 rxLinPredError <- function (actualVarName, predVarName, data, sWeights = NULL, blocksPerRead = 1,
                     reportProgress = rxGetOption("reportProgress")) {
   
-  .BlockCompute <- function(datalist){
+  if(exists("data", mode = "list")){
+    numRow = nrow(data)
+  }else{
+    datInfo <- rxGetInfo(data)
+    numRow <- datInfo$numRows
+  }
+  
+  .rxGet <- function() {}
+  .rxSet <- function() {}
+  rm(.rxGet, .rxSet)
+  
+  BlockCompute <- function(datalist){
     
     # Getting the data
     dActualY <- datalist[[actualVarName]]
@@ -65,7 +76,7 @@ rxLinPredError <- function (actualVarName, predVarName, data, sWeights = NULL, b
     
     # Weights
     if(is.null(sWeights)){
-      dWeights <- rep(1, length(dError))/length(dError)
+      dWeights <- rep(1, length(dError))/numRow
     }else{
       dWeights <- datalist[[sWeights]]
     }
@@ -99,7 +110,7 @@ rxLinPredError <- function (actualVarName, predVarName, data, sWeights = NULL, b
     blocksPerRead = blocksPerRead, 
     reportProgress = reportProgress, 
     returnTransformObjects = TRUE, 
-    transformFunc = .BlockCompute, 
+    transformFunc = BlockCompute, 
     transformObjects = list(dSumABSPropError = 0, dSumPropError = 0, dSumWeights = 0,
                             dSumSQWeightedErrors = 0, RSS = 0, N = 0)
   )

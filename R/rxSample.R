@@ -21,6 +21,7 @@
 #' @param data xdf File
 #' @param size Number of rows to sample
 #' @param replace If TRUE, samples with replacement.  Passed to \code{\link{sample.int}}
+#' @param maxRowsByCols the maximum number of rows x columns as specified by rxDataStep
 #' @export
 #' @return A data frame
 #' @family Data mining functions
@@ -29,7 +30,7 @@
 #' xdfFile <- file.path(rxGetOption("sampleDataDir"), "CensusWorkers.xdf")
 #' df <- rxSample2Df(xdfFile, size = 10000, replace = FALSE)
 #' df <- rxSample2Df(xdfFile, size = 10000, replace = TRUE)
-rxSample2Df <- function(data, size, replace = FALSE) {
+rxSample2Df <- function(data, size, replace = FALSE, maxRowsByCols = 3E6) {
   extraRows <- 100
   dataInfo <- rxGetInfo(data, getVarInfo = TRUE)
   oneVar <- names(dataInfo$varInfo[1])
@@ -77,14 +78,15 @@ rxSample2Df <- function(data, size, replace = FALSE) {
     ret <- rxDataStep(data, 
                       transformFunc = createRandomSampleReplace,
                       transformObjects = list(sample = mySamp, ret = list()),
-                      returnTransformObjects = TRUE)
+                      returnTransformObjects = TRUE, maxRowsByCols = maxRowsByCols)
     ret <- do.call(rbind, ret$ret)
   } else {
     newP <- p + extraRows / dataSize
     ret <- head(rxDataStep(data, 
                            transformFunc = createRandomSample,
                            transformVars = oneVar, 
-                           transformObjects = list(zP = newP)), 
+                           transformObjects = list(zP = newP),
+                           maxRowsByCols = maxRowsByCols), 
                 n = size)
   }
   return(ret)
