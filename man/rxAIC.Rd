@@ -20,6 +20,7 @@
   model object.
 }
 \examples{
+library(RevoScaleR)
 sampleDataDir <- rxGetOption("sampleDataDir")
 working.file <- file.path(sampleDataDir, "AirlineDemoSmall.xdf")
 }

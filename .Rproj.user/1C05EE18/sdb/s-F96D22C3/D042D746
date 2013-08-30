@@ -1,0 +1,15 @@
+{
+    "contents" : "#\n# RevoEnhancements/R/rXAIC by Derek Norton\n#\n# Copyright 2013 Revolution Analytics\n#    \n# Licensed under the Apache License, Version 2.0 (the \"License\");\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n# \n#      http://www.apache.org/licenses/LICENSE-2.0\n# \n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS, \n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n\n#' Calculates Akaikes Information Criterium (AIC) from a model object.\n#' \n#' @param object Model object, the result of \\code{\\link[RevoScaleR]{rxLogit}}, \\code{\\link[RevoScaleR]{rxLinMod}} or \\code{\\link[RevoScaleR]{rxGlm}}\n#' @param k Multiplier. Defaults to 2, the value for AIC\n#' @return Numeric\n#' @export\n#' @family Model summary statistics\n#' @examples\n#' library(RevoScaleR)\n#' sampleDataDir <- rxGetOption(\"sampleDataDir\")\n#' working.file <- file.path(sampleDataDir, \"AirlineDemoSmall.xdf\")\nrxAIC <- function(object, k = 2) {\n  deviance(object) + k * object$df[1]\n}\n",
+    "created" : 1377851540932.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2133822883",
+    "id" : "D042D746",
+    "lastKnownWriteTime" : 1377851546,
+    "path" : "~/GitHub/RevoEnhancements/R/rxAIC.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
