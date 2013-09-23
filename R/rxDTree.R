@@ -20,29 +20,39 @@
 #' 
 #' @param x rxDTree object
 #' @param text If TRUE, adds text labels
-#' @param plotArgs Named list, passed to \code{link[rpart]{plot.rpart}}
-#' @param ... Other arguments, passed to \code{link[rpart]{text.rpart}}
+#' @param plotArgs Named list, passed to \code{\link[rpart]{plot.rpart}}
+#' @param textArgs Names list, passed to \code{\link[rpart]{text.rpart}}
+#' @param ... Not used. Required for consistency with other plot methods.
 #' @method plot rxDTree
 #' @import rpart
 #' @export
 #' @examples
-#' library("RevoScaleR")
-#' frm <- as.formula(Species ~ Sepal.Length + Sepal.Width + Petal.Length + Petal.Width)
 #' 
-#' fit <- rxDTree(frm, data = iris)
+#' ### rxDTree examples
+#' library("RevoScaleR")
+#' library("ggplot2")
+#' frm <- formulaExpand(price ~ ., data=diamonds)
+#' fit <- rxDTree(frm, diamonds, maxDepth=3)
+#' par(mar=c(0.5, 0.5, 2, 0.5))
 #' plot(fit)
+#' plot(fit, textArgs=list(col="blue", cex=0.7))
+#' plot(fit, textArgs=list(col="blue", cex=0.7), plotArgs=list(main="Forest 1"))
+#' 
 #' 
 #' if(exists("rxDForest")){
-#'   fit <- rxDForest(frm, data = iris)
-#'   plot(fit$forest[[1]])
-#'   plot(fit$forest[[3]])
+#'   fit <- rxDForest(frm, diamonds, maxDepth=3)
+#'   forest <- fit$forest
+#'   par(mar=c(0.5, 0.5, 2, 0.5))
+#'   plot(forest[[1]])
+#'   plot(forest[[1]], textArgs=list(col="blue", cex=0.7))
+#'   plot(forest[[1]], textArgs=list(col="blue", cex=0.7), plotArgs=list(main="Forest 1"))
+#'   plot(forest[[2]], textArgs=list(col="blue", cex=0.7), plotArgs=list(main="Forest 2"))
 #' }
-plot.rxDTree <- function(x, text=TRUE, plotArgs, ...){
+plot.rxDTree <- function(x, text=TRUE, plotArgs=NULL, textArgs=NULL, ...){
 #   stopifnot(require(rpart))
   class(x) <- "rpart"
   x$functions$text <- function (yval, dev, wt, ylevel, digits, n, use.n) 
   {
-#     browser()
     nclass <- 1
 #     group <- yval[, 1L]
     group <- yval
@@ -57,6 +67,19 @@ plot.rxDTree <- function(x, text=TRUE, plotArgs, ...){
       paste0(format(group, justify = "left"), "\n", temp1)
     else format(group, justify = "left")
   }
-  if(!missing("plotArgs") && !(is.null(plotArgs))) plot(x, plotArgs) else plot(x)
-  if(text) rpart:::text.rpart(x, ...)
+  dots <- match.call()
+  ### Create plot
+  if(!missing(plotArgs)) {
+    do.call(plot, c(list(x=x), plotArgs)) 
+  } else {
+    plot(x)
+  }
+  ### Add text
+  if(text) {
+    if(!missing(textArgs)) {
+      do.call(rpart:::text.rpart, c(list(x=x), textArgs)) 
+    } else {
+      text(x)
+    }
+  }
 }
