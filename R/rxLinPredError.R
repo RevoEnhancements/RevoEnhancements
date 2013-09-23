@@ -31,7 +31,7 @@
 #' @param sWeights String name of error weights.
 #' @param data data frame, or character string containing an '.xdf' file name (with path), or RxXdfData object representing an '.xdf' file containing the actual and observed variables.
 #' @param blocksPerRead number of blocks to read for each chunk of data read from the data source.
-#' @param reportProgress Passed to \code{\link{rxDataStep}}
+#' @param reportProgress Passed to \code{\link[RevoScaleR]{rxDataStep}}
 #' @return returns a list of prediction measures MSE, MAPE, MPE, MSWD 
 #' @export
 #' @family Model summary statistics

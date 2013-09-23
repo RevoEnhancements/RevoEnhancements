@@ -1,19 +1,23 @@
 \name{range2formula}
 \alias{range2formula}
-\title{Function to create a formula from a range on an XDF (DF)}
+\title{Create a formula from a range on an XDF (DF).}
 \usage{
   range2formula(range, data)
 }
 \arguments{
-  \item{data}{xdf file}
+  \item{range}{numeric range of values to use in formula}
 
-  \item{range}{Numeric vector}
+  \item{data}{XDF file or data.frame from which to create
+  new formula}
 }
 \description{
-  Function to create a formula from a range on an XDF (DF)
+  This function allows the specification of a range of
+  variable instead of a formula
 }
 \seealso{
   Other Compatibility functions:
   \code{\link{formulaExpand}}
 }
+\keyword{formula}
+\keyword{range,}
 

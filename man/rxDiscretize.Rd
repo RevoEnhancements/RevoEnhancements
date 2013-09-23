@@ -1,6 +1,6 @@
 \name{rxDiscretize}
 \alias{rxDiscretize}
-\title{Function to create equal width or equal frequency discretized variables from continuous variables.}
+\title{Creates equal width or equal frequency discretized variables from continuous variables.}
 \usage{
   rxDiscretize(formula = ~., data,
     type = c("width", "freq"), nBins = NULL,
@@ -12,21 +12,24 @@
 
   \item{data}{xdf file}
 
-  \item{type}{Character vector, either "width" or "freq"}
+  \item{type}{Determines whether the discretization
+  produces equal \code{width} or equal \code{freq} results}
 
-  \item{nBins}{???}
+  \item{nBins}{Number of bins}
 
-  \item{subscript}{???}
+  \item{subscript}{Character vector. Gets appended to
+  column names to indicate the discretized columns.}
 
-  \item{sep}{???}
+  \item{sep}{Separator character between column names and
+  \code{subscript}}
 
   \item{integerLabels}{???}
 
   \item{finalTransform}{??? #'}
 }
 \description{
-  Function to create equal width or equal frequency
-  discretized variables from continuous variables.
+  Creates equal width or equal frequency discretized
+  variables from continuous variables.
 }
 \examples{
 library(RevoScaleR)
