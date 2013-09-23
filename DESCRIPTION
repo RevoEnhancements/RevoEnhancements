@@ -14,7 +14,8 @@ Version: 0.0-03
 URL: https://github.com/RevoEnchancements/RevoEnhancements
 Imports:
     RevoScaleR,
-    hexbin
+    hexbin,
+    rpart
 Suggests:
     ggplot2,
     mlbench,
@@ -34,3 +35,4 @@ Collate:
     'rxF1score.R'
     'rxLinPredError.R'
     'rxAIC.R'
+    'rxDTree.R'
