@@ -1,3 +1,10 @@
+RevoEnhancements 0.0-04 (Release date: 23/09/2013)
+================
+  
+New functionality
+* New plot method for rxDTree, allowing plotting of partition trees in rxDTree as well as rxDForest objects
+
+
 RevoEnhancements 0.0-03 (Release date: 27/08/2013)
 ================
   

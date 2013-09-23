@@ -23,7 +23,8 @@
   \item{blocksPerRead}{number of blocks to read for each
   chunk of data read from the data source.}
 
-  \item{reportProgress}{Passed to \code{\link{rxDataStep}}}
+  \item{reportProgress}{Passed to
+  \code{\link[RevoScaleR]{rxDataStep}}}
 }
 \value{
   returns a list of prediction measures MSE, MAPE, MPE,

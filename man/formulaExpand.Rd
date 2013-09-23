@@ -1,20 +1,23 @@
 \name{formulaExpand}
 \alias{formulaExpand}
-\title{Function to expand a dot (.) to represent all variables in an XDF (DF)}
+\title{Expand a . to represent all variables in an XDF (DF).}
 \usage{
   formulaExpand(formula, data)
 }
 \arguments{
-  \item{data}{xdf file}
+  \item{formula}{formula to be expanded}
 
-  \item{formula}{???}
+  \item{data}{XDF file or data.frame from which to create
+  new formula}
 }
 \description{
-  Function to expand a dot (.) to represent all variables
-  in an XDF (DF)
+  This function allows the use of . (dot) expansion in
+  functions that would otherwise not allow it.
 }
 \seealso{
   Other Compatibility functions:
   \code{\link{range2formula}}
 }
+\keyword{expand,}
+\keyword{formula}
 

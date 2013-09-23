@@ -16,14 +16,14 @@
 # limitations under the License.
 
 
-#' Function to create equal width or equal frequency discretized variables from continuous variables.
+#' Creates equal width or equal frequency discretized variables from continuous variables.
 #'
 #' @param formula Formula
 #' @param data xdf file
-#' @param type Character vector, either "width" or "freq"
-#' @param nBins ???
-#' @param subscript ???
-#' @param sep ???
+#' @param type Determines whether the discretization produces equal \code{width} or equal \code{freq} results
+#' @param nBins Number of bins
+#' @param subscript Character vector. Gets appended to column names to indicate the discretized columns.
+#' @param sep Separator character between column names and \code{subscript}
 #' @param integerLabels ???
 #' @param finalTransform ???
 #' #' @export
