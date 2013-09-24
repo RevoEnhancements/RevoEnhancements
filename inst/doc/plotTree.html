@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Visualizing Decision Trees and Forest objects with Revolution R and the RevoEnhancements package</title>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<!--
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Visualizing Decision Trees and Forest objects with Revolution R and the RevoEnhancements package}
+-->
+
+<h1>Visualizing Decision Trees and Forest objects with Revolution R and the RevoEnhancements package</h1>
+
+<p>Our package <code>RevoEnhancements</code> on <a href="https://github.com/RevoEnhancements/RevoEnhancements">github</a> now contains an enhancement to <code>RevoScaler</code> that enables plotting of <code>rxDtree</code> and <code>rxDForest</code> objects.</p>
+
+<p>First, load the required packages:</p>
+
+<pre><code class="r">library(RevoEnhancements)
+library(ggplot2)
+rxOptions(computeContext = RxLocalParallel(), reportProgress = 0)
+</code></pre>
+
+<h2>Plot decision trees:</h2>
+
+<p>The Revolution function to create a decision tree is <code>rxDTree</code>.  We use <code>rxDTree</code> to fit a partition tree of the <code>diamonds</code> data, restricting the maximum tree depth to 3, simply to make the plot stand out better.</p>
+
+<pre><code class="r">### Create and plot an rxDTree object
+
+frm &lt;- formulaExpand(price ~ ., data = diamonds)
+fit &lt;- rxDTree(frm, diamonds, maxDepth = 3)
+</code></pre>
+
+<p>Since the package <code>RevoEnhancements</code> exports a method for <code>plot.rxDTree</code>, we simply have to call <code>plot(fit)</code> to visualise the tree: </p>
+
+<pre><code class="r">par(mar = c(0.2, 0.2, 1.5, 0.2))
+par(mai = rep(0.1, 4))
+plot(fit)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbAAAAEgCAMAAADi9tZbAAAAilBMVEX9/v0AAAAAADkAAGUAOWUAOY8AZrUoAGU5AAA5ADk5AGU5OWU5OY85ZrU5j7U5j9plAABlADllAGVlOQBlOY9lZgBlZmVltf2POQCPOTmPOWWPZgCPtY+P27WP29qP2/21ZgC1Zjm124+1/rW1/v3ajzna24/a/rXa/v39tWX924/9/rX9/tr9/v3Aze0XAAAALnRSTlP///////////////////////////////////////////////////////////8Ago9zVQAAAAlwSFlzAAALEgAACxIB0t1+/AAAC1FJREFUeJztnY124rYWhWvSTDNM2mQm6UDm3tZ0LtyCsd//9Sqdc2TJf0mm2E427G9lLYwxkaXPkn90JH6qCBQ/vfUOkB+DwsCgMDAoDAwKA4PCwDgvYcVym7w73mfXe11/k11t65ddlskrJGcsrFyvqt0Hv3S8d0vXe3upNqu32r8RABXmKs8i9zUmW1XFp4errSy6tVJzihuv5PhlawaL2311/JzbS/mUv/HenwKmMF95Dtd/f869Ea/naIvOT7m2htD8VG1hTqv3DAqmsNj0uWoU3ujiYRHqz+E6CJO2cJHbS/Exr3BrGaiwW72Y2PirBxVWL/bUMN92/vaUhxf5JmoVAxUmjnyNsXYwWfQf3/yyTc9hHv8uvlDYvPhzWLH87my49s1LKeKiR7SU67twlejqmVuyF99Ult94WT8repXobqh+fliJJV0s11dJPdL7MP/xIZNm0l7ctgvUUxiqsBcIDd8ZMp+w7KyZrRhnFDZbSm9QwyjsNChsBChsFChsFCjsNChsBChsFM5T2OxQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWBQGBgUBgaFgUFhYFAYGBQGBoWBQWFgUBgYFAYGhYFBYWCcm7Bd5tiGpattVdxk2WqWpKdFMuZyIsKKpcuiy5nLX8jn+MwjbLMKB+FGNB0/51XxMZ8l7ck5XO8lcwdv6Hi/qnZuxWaqw3EaYW53i9t95Y83v+PlU27CZMnl7UNVTZenKWnlrNKDz2dus/ivq2H+Q7fG8jkB0wg73Pm/cp1d+7y5w843HPWS5lQyCkcrZ46dP/jqJtGEJfkcmWmEHR/3f+WHRTDiW78yy8OSHH3l+m6SpCemlbNw3NXCpElc5DGfYzONsPLpj8d94zh0eaoPON8WHu8hfXVzdpCFxkXHb2ZqkjZ/oouO3Vf1Ubf0LWHJejDaOdvI2yjMcfyir0jCmpeA/igs5bJelr5tcX21L26t3YtNomsh3VnN8jlB+hMJa+2suytZZJIhv5TXty+AtHKmp7BCjkapYYdMWkvN5wRMVcN+7aw6kycdPTmr8J907HqOrvMQ1pezCl9YH+chbIB3LSybl/HzDJ25fyPsx79yAnMLe++pUdhbJkdhYMlRGFhyFAaWHIWBJUdhYMlRGFhyFAaWHIWBJUdhYMlRGFhyFAaW3BzCyrWmohGu03cdU1iTHxa2CwGGGuFahbihcQnxLJqn430IUrJA6OniodGFdQJdi08PGnCiAZPVRAGhDWHleqXhmhricr2fMB4aXVg70LV8+nPdEqZF+W9xlWeR29gIdzBcbWXRrZWa4w6TTMPG1KCk+mU7YTw0urB2oOvuzs5hFuF6agXzledw/bcfG7GU4LejLTo/ephk7drsqtaE8dDowlqBrq6kkosOiXA97QwWmz5fcWIgplu0wyTTJOy40LPZhPHQ6MJaga56URiCrCXCdXNSyLWeIN1/8VcPKqxe7KlhXtFBh5dNFA8NL6wziis0iRrheuoRro58jbF2MFmsuuewtK5NEw8NL6wTb+yF+dKzCNcTrxH9OaxYfvfjdD7mMlwnLiqZDnTRSxurYRPGQ8MLmzqEV68SXVP788NKLOliuQ73V/E+zA4Tf2qbLh4aXdjbh/DySUeTAWHzBUa+RXLP7cn4/3Lc1IaEzbYDb5HcvP9y3NTeh7D3A6qwi4XCwKCwPvRZb+hLO2gfibvBs0vSw0Cnia1v9634eznPKJ0tQMJC+XV6JmNJdpFbJ9vACjJuHruxmiTz4Lh7XxlI+0EeWehzybCiLy23vtO3srMHwKM88wAS5nElZg/E7Z1/qUuyi8zWYxskBambx26s9rfqeXDCcxLnIjxqqsKK3gT9U6tW30rx6UGPq1EeA2MJk0Nfu5yqqv3Qrgedrcc2CH0eX5Ln74MF3+pLc6/F7X+SijzUySYbNvpWfA+dzl81SmcLljBfTLGGWaE1S7KFztYjG1hBxs3jQ/YuOg+OfVrcSB/mqn52Lyv6UvPrW30rvodONI3T2QIlzDoJ7cxTN1dJSXYQYbpBKMh68+TRehubB6duaUV0uvWQaGkD0r4V6aGL9erk8xiUMCm/0OVUl+ZzFSWdD8sKMum8GvxicxYZWVodHxtbD5W8Td9X9600e+guTJiUX10vQmm2SrKJdGE9pp1U8d3gOSz40gYsJLh5qWba+k7fitWwcTpbkIRp+YUaFk8HmxeaRNsgdGnWm8durBbhlsGsWCeJBt7E2XJ6v9fXt6J9asNf+yGQhFn5WZeTNWvSCTx8PyrCbIPQpVkX/NB92HsGSRipKAwOCgODwsCgMDAoDAwKe680b+nr2NVOEU41u37Sf2X9UkPdgE0orLliNmGeQxYe2u5iv+ALXKIwCV7Vx9ZhlNP35f/c/f7vqyqrn+nYz8NsvsqLBryeQt9vSsSRW9ZFNdQbFblAYTrE6f/LbRjadBPC+Q93VXZ30LbKPqw2cuzrd056bNP3mxJxmIKuZA3rw8YG6sFso5xU2PFxn6XVyB/3vkncrF5x6L9E329KaAMcHuENdQM2uERhtyFyJA5tUmHl0x9ZrEXyYfVXbt1upybb95sS2iSGDq1XDS25RGGhhiVDm+xl9zWrQpOoH/oa5trDEWpY329KiLC0O+nlS5wLFFYPcUqGNgVvH+urRPuw2nyo7Bx2qrSe35RIa9gzHfQpFygsXiXGUU7i5GpbfouX9fqhv0q03rpTO9t6flOiHmrn//fr+vMuUdgwxa8TPukYZ6gdhSXsFvl0wkYaaneJwmYejTZuchcpbNavjZwchU39NQo7GQoDg8LAoDAwKAwMCgODwsh8UBgYFAbGRQiTEWTNCbnjyJqBMTYhDM0mRahj0OJ4z77+sTDP4zJNQt5ZulXvrAz2tXQ/bRKL+DXjIoT5iSFskgOLeIkzHAzOdVBpX7BOihBj0MIkEzaDQusLuk5e6n8s75JIm+6sDOFfJfsZhprWXyts20sQJhND1GPmJaYsjg59Zq4DX1rJHApaUWySCZtBoYmti5MrSIyBvEsmZ+jMyhD+VbqfNp4yCYEzLkCYTgwRZotozMtdPTuE29ePZA4FnTH3z9c2iUkSy7SG9c3KoPPTNPbzvh6kumtUxwsQphNDhHnb9cwSAyiGQylkbT0pgsag1ZNMVC8Ki/+4dUbrmZVB52JN9zNMYtE5w56/sDAxhE1yoBEvr6lhOqlC/Fgb1FcLa9awGMvWl6Btn+ynrN6skhA44/yFJRNDuLNBmIrgFecwmUYhnUOhNcnEC8KS37No1Le+WRksIijZT0uwW//PX9iZQWFgUBgYFAYGhYFBYWBQGBj/AAHAqK6aSoo/AAAAAElFTkSuQmCC" alt="plot of chunk rxDTree-plot-1"/> </p>
+
+<p>The function <code>plot.rxDTree</code> takes additional arguments to control the plot and text characteristics:</p>
+
+<ul>
+<li><code>plotArgs</code> should be a list and gets passed to <code>plot.rpart</code>.  Use this to control plot axes, titles, etc.</li>
+<li><code>textArg</code> is also a list and gets passed to <code>text.rpart</code>. Use this to control the text on the plot, e.g. colour (<code>col</code>) and character size (<code>cex</code>).</li>
+</ul>
+
+<p>For example, to set the text colour to blue and the character expansion to 0.7, use the <code>textArgs</code> argument:</p>
+
+<pre><code class="r">plot(fit, textArgs = list(col = &quot;blue&quot;, cex = 0.7))
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbAAAAEgCAMAAADi9tZbAAAAnFBMVEX9/v0AAAAAADoAAGYAAJAAALYAANsAAP4AAP8AOf8AZv4oj/05AP85Of85Zv45j/05j/5lAGVlAP5lAP9lOf5lZv5lZv9ltf1ltf6POf6POf+PZv6PZv+Pj/6Pj/+Ptf2Ptf6P2/21Zv61Zv+1j/61tf612/21/v21/v7aj/Paj/7aj//atf7a2/3a/v39tf792/79/rX9/v39/v5rL8M5AAAANHRSTlP//////////////////////////////////////////////////////////////////wD/9XEwmgAAAAlwSFlzAAALEgAACxIB0t1+/AAAB2RJREFUeJzt3A972lQYhvFh3chm26gdxhanCzgzG9dTw/f/bp73nACZK4GWBHjIfV/2jyzXMfTXBJYXfFWRVK+OvQP0vAATCzCxABMLMLEAEwswsQATCzCxABMLMLEAEwswsQATCzCxABMLMLEAEwswsQATCzCxABMLMLEAEwswsQATCzCxABMLMLEAEwswsQATCzCxABMLMLEAEwswsQATCzCxABMLMLEAEwswsQATCzCxABMLMLEAEwswsQATCzCxABMLMLEAEwswsQATCzCxABPr/MBmRVU9XiapS8OXMiuTtL7d/+OSt9f2UVWLybH39EWdH1iZLd5PC2dgM/+lzKrq7+SHePuD/3N/u/+Y54CdSIubxB9U/jhKq/BlXFT//lTE253/k3FhH/7gy4+9py/q/MCeKICdSYCJdUpgI80O+0M6KbC+Fu71CAOs+wDrJ8B2CLB9A6z7AOsnwHZoEGC9BphYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWIMFe7xMsvjZf+TH3pvdmifJOw+2mPj9HhfxHvTcscGmD38+xO9cNgqf/Y8hd++OulNbWu9zVZV+rx8v3/l9frx2/XMdH+z+88Tf6yS1T29y+2xH10Hu+otb77MdW/EIM7C47z13bDD38Y94130XE/vs7/1icsxd2lpjn8usBnPJ2+vqEDt+bLDFbV7/ts5zA5vni8ni5+LIe9Xeep+rWVGDecbU9r33//ixwfwDQv3N4+Wb3IUnHPZQftR92tZqn+2715mBlUl40nH+p8Tqw/pbmaf1H5r/MrCn9fPG0wsVsPlXT4kGBtZMBezrABPrvMBGPTbMne4bTHHpk95pwA65MmBiKwMmtvLpg70uqjB56OHiBWBd1Zg+OAOzC9nhMmlXxaXsGt5NPUJLOx1HDQ2sMX2YrsD2uixqMGWSZO5q/HuS/HoztovDI5NbvH8wv+lvXY6jhga2nj64zMDC5GGvA6zM7Bh1qbNVXWprlcl34Vr5zH4jkrzTcdTQwNbTh7J+5PI/6Nk+E5NZEU98fh37Uma2+mgJNs+q209djqOGBtaYPvgnHS6zyUPztudnp75pEY6wWdE4wuIpcZ5Xd3mX46jBgXU+MYmPYW+vPVj4snwMs9vDCC3tdBw1NLADTUx4Wt9HJ33fD7/yCYH1eNH6wJfDhwLW39b9bdzjGr0tfUoDzFMJMLEAEwswsQAT67zBbNJl1xrixKt9xBHelmNvJ1rOQuJ85MmWLwF2SZLHjd3mi7txo+Wqt8W2HWnvvMHsip4NOMKYw67rbS6+LSfOW+KG8WLgk8X3HJXZl8plceMvm9/UEjeqJyzhytU+s5YzB7MrrnP/ux+uvN5dtV3P85vYBvajjRvW85Gnc+FF6/bzr1eN1xCf3nZcrCYs02mxfNvSjrl09Y391q1/qvfdvlZ+dRZKW84WW9ofzN9FG3AUYeJ113rF3MD8BjYgixu2gdmfhzUfr5er2lRsQ/7oqicsLotL7njpPlxATuvx6Kcfb5Lrh+/DQW833f+SZC2n7d1qvv/vTRbu1PSvF58C9geziZQNOMKPqX3EEd74Fo6aehbSckoM7zkKay8mceOWtZurxiHczrMWG47aERaGN3aE3X++8Esk4aYy9Udt1vJ7skvN9/9dhL31R1fL2aK9/cH8o5cd5PbVbXl7cnzSkS9nIa7ttzecPuLaedy4Ze3mqsa8bUca2e+ZS+vxqIG5j6MAZjfd5zaI22mdzTXf/2dn23A+ajtbtDb4p/V2kP+TzorVEba4jY9hcVRqR9jGs8BuNd//F8D8+ejqxcPWwYMtH8PCeNSrjYtpBLOb7v2znb0fw5rv/xvFs1D68mHr4MG+7UPXT+s7ncAD9v/mWcdg3U7gAfu2M/+L8/kF2Ml2Kq9reMbSAwc7jY2fszVgJ7AxYLsGmFiAUd8BJhZgYgEmFmBiDRPstqhfY5XG4cmWQaq9BCu+CsNekLXxxQd2u/3/VG2xOKtNW16+FVZZ7UgWt97+Wo9hggkHmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIkFmFiAiQWYWICJBZhYgIn1H2OX4hmKNRBAAAAAAElFTkSuQmCC" alt="plot of chunk rxDTree-plot-2"/> </p>
+
+<p>To also set the plot title, use the <code>plotArgs</code> argument:</p>
+
+<pre><code class="r">plot(fit, textArgs = list(col = &quot;blue&quot;, cex = 0.7), plotArgs = list(main = &quot;Decision tree&quot;))
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbAAAAEgCAMAAADi9tZbAAAAzFBMVEX9/v0AAAAAADkAADoAAGUAAGYAAJAAALYAANsAAP4AAP8AOY8AOf8AZrUAZv4oj/05AAA5AP85Of85Zv45j9o5j/05j/5lAABlAGVlAP5lAP9lOf5lZjllZv5lZv9ltf1ltf6POQCPOf6POf+PZv6PZv+Pj/6Pj/+Ptf2Ptf6P2/21ZgC1Zv61Zv+1j/61tWW1tf612/21/v21/v7ajznaj/Paj/7aj//atf7a2/3a/tra/v39tWX9tf7924/92/79/rX9/tr9/v39/v6bPNc+AAAARHRSTlP///////////////////////////////////////////////////////////////////////////////////////8A/8/0ne0AAAAJcEhZcwAACxIAAAsSAdLdfvwAAAiSSURBVHic7ZwBX9NGGIdXplOCOhAyNxzLxM7NQDcXHZ2DgKbf/zvt3ru0DVrSQhuaf/M8P2ljcr5e+vS9nPcmflOAFN+suwNwOxAmBsLEQJgYCBMDYWIgTAyEiYEwMRAmBsLEQJgYCBMDYWIgTAyEiYEwMRAmBsLEQJgYCBMDYWIgTAyEiYEwMVSFfXrRM5KZhx5ks7a/5GTWH2494sJ6B3eOcDLTduvRFWapc9Gz1w9lqn1+1bPf+0OXu9Nt3+DAjj/4y+8t2/aefn619XNvK51EmG60Fm1hPk1OylTzDpwPOxQScOfcNwsNnpYN3EYxFeZbjSNMQrUYcWEfesnl7s65JU92uevlJHbI7yybXe66HPr0Yit1eg5cUoYj3rXb4/RVIpQb6zyzOegLuwgXs630okyNSYaVQ+KFzynX0g2AZu6aMLenqEQoN9Z3XnMRF3ZyTdjT6SG7hrl9XwjzChG2DqaTjvHoV/gh8UPvYDKVnwyPkyFxtrBKhHKjxegKm0zrw0xh57w66fAJVm5XJh3XhflZYlpMI0w32ou4MD8FPxl/yCd+OJsMiePtyrS+Isy12PkvCLsWod2+ZIV1FoSJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIE2PzhJ1mRXG1F8V57N+GyTCKy/3uVx492befohgdrbund2LzhA2T0ct+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" alt="plot of chunk rxDTree-plot-3"/> </p>
+
+<h2>Plot Decision Forests:</h2>
+
+<p>For comparison we fit a decision forest on the same <code>diamonds</code> data.  This creates a <code>rxDForest</code> object. This object is a list and the individual trees are contained in the <code>forest</code> element.</p>
+
+<pre><code class="r">### Create and plot an rxDForest object
+
+fit &lt;- rxDForest(frm, diamonds, maxDepth = 3)
+forest &lt;- fit$forest
+</code></pre>
+
+<p>Now we can plot the individual trees.  Since each individual tree of an <code>rxDForest</code> object is itself and <code>rxDTree</code> object, the plotting is identical to what we illustrated earlier:</p>
+
+<pre><code class="r">par(mar = c(0.2, 0.2, 1.5, 0.2))
+par(mai = rep(0.1, 4))
+plot(forest[[1]], textArgs = list(col = &quot;blue&quot;, cex = 0.7))
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbAAAAEgCAMAAADi9tZbAAAAh1BMVEX9/v0AAAAAADoAAGYAAJAAALYAANsAAP4AAP8AOf4AOf8AZv45AP85Of85Zv45j/1lAGVlAP5lAP9lOf5lZv5lZv9ltf1ltf6POf6POf+PZv6PZv+Pj/+P2/21Zv61Zv+1tf61/v21/v7aj//atf7a2/3a2/7a/v39tf792/79/rX9/v39/v7GGTpIAAAALXRSTlP/////////////////////////////////////////////////////////AP8byRkCAAAACXBIWXMAAAsSAAALEgHS3X78AAAIG0lEQVR4nO2dDXubNhRGm3aNWT7sLclo4hYzxrrIw///901XAsdJs0ZJAPvF5zyhOG7kCz4I6/FFlw8NSPFh3xsArwNhYiBMDISJgTAxECYGwsSYnrA6bx9srjL/cH0xq+KS5T9tJ8IEhJmYOstydzn7lmVfrmZVfL7ON9f3TVms57a4SeiahLA6X8+bxi3corGV9bA6849Xlf10wrzSYt9b2gcTEOat+BNfZsJsVedBVyfMZWdzW3xPvNn3lvbBBITZqW9ZhR62qnZ6WDwlWqezpSwQdiDEzzDfjxZNWPnPsH9/q+Lzzv/PrLLFdz5OiQdLEDZNECYGwsQYT9jJpBntbRxR2GiR9tDDEPY+ENYDCOsFhPUCwt4HwnoAYb0wTWGjgzAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsRAmBgIEwNhYiBMDISJgTAxECYGwsSYlrA6t3/9Pm2uMv9wfZHlLssKW48QfQTKLDsP+1U0m5uBYw0izMTUmddyOfuWZV+uZlUThNX55vq+KYum+d643InrWv31IOfU70tZuPP1xfnAUQcRVufredO4hVs0trIeVmcf/S5W9nN36Y9EN6u80mKI6GOxvi5sv2wfN5/CM/4Q1Oxh3oqdIEyYrercdutkK6ywvTKlg+/dsCzvoy6vLXyG2e5oCrNT37IKPWxV7fSw7pS4uemWIaKPhbvJux62MmGb3ytVYfEz7GzuhYVV9xlmz7vcPpy7ZYjoY7G8X953D0/86TAMPTSFPQvD+l5AWC8gTIyDFnYyLv3vs/TOvUXY65u8g7GFHXo0hO0zHMLEwiFMLBzCxMIhTCwcwsTCIUwsHMLEwiFMLBzCxMIhTCwcwsTCIUwsHMLEwo0j7HO4JmpWxcsnh+ZzuBhunFjNdITtXDTpTFhZ2GVq9VCXgu74+djEC04Hi/WYqQjbuWhyuRU25BVCd128k3jN1VhXxE1F2MNFky43YS47mw950Jd5e3j4fbK+PFYHm4ywh4sm6/ZsFS4SfX28NOrgKsQ7jZebDhfrMVMRtnPRpB90uLzO/Inq4am+ucuyX9sX/+UiK/yn2HCxHjMVYe+M8g4Y1j8GYfsMhzCxcP0JG+/CyH2E+9mW9P+S/Ub7P2GjbcA+wo37kv1GOwxhh4OqsKMFYWIgTAyEiSEnzBIbNvPfEl7JaajNTaiWEtvcVl0FlZewSc7dxOAYKamdFWWJmzmr4jzpGLgX5ITZ9+J13iy/hoRX2rfkVk3EqqWEnEvIhsRyAS9hlUhCUY9QjSTUGkhp9z1kyOrcwsWXKNuN7QE9YfbdeOkP4fgepKWh/F9ZtZTQZrmsuoIcL9NWItkWuEhrZ8eEdcqwiS4/cmH+QC/z5vZPS3ilpqFMWLG5sSSZy1fpwkySRejWqe3WIRcXcnLBs4sb2wd6wvwb5k9vd0UT6g6lpaHC4W5vnVvEdFnaKTFUIrEI1jRESmoXQoU/d4vwEuFRynYmoCdseR/LDWWzKjkNFQcdRUiSWe2bPG3QEQYaFsGE+XViuzDQ8H9u4ewl2uxcP+gJO3IQJgbCxECYGAgTA2FiIEwMhImBMDEQJgbCxECYFPFmFfYF5RgzCLc3lFi84iYZCNudrVgW8ZiPydSho8UbSli6+O/0WAjbna14d3lqldkHvWPADzeUKC3PkVwRHmHNzmzFu+KTeRqyg/1wQwlLF1fpxwfCdmcrllFYmzQfOlq8oYSliy/Tb5KBsN3ZiuuL02724GAzCJ/eUKIddHBKfBsM68VA2AEiPfntKIWN2qzncAgbuhnC3g3C4GcgTAyEiYEwMRAmBsLeRpwjGpZF/HI8KW0Ys4y3VXtf3NDgdqTScs9xPMLizL+YMPwnzPks075wtalos8rmerYNXG9zZd7A8QizJKHNE7WEYexh4bcXCXOhbFqpy9sG4bd9cTzC7K23eaIhYRiFJWWhrIPZtNJ2mmkTf9sbxyPMJm7GpTNVJgnzdmxaqc31jA3qsSp8P8vxCGtHDUU36Aipw4RTYkg3rqq2HoblNxOy0f71bTZprEyxrRj/4vER/uC2agta5M8Nco5H2JhYIQubr/01VKboKsbH8hYvNIsDnPW8GyM1TwY5CBuEOG1+9UcnLPatpB7mhzTWZDtGejLIQdggtMKseMZOxfgUYTakiWUs4hjp6SAHYYPg3+hYwsLqUWwrxqcIi0Mat+jGSE8HOQgTA2FiIEwMhImBMDEQJgbCxPgPmMJ6EvF2o/0AAAAASUVORK5CYII=" alt="plot of chunk rxDForest-plot-1"/> </p>
+
+<p>Again, you can take control of the plot with the <code>plotArgs</code> and <code>textArgs</code> arguments:</p>
+
+<pre><code class="r">plot(forest[[1]], textArgs = list(col = &quot;blue&quot;, cex = 0.7), plotArgs = list(main = &quot;Decision forest: Tree 1&quot;))
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbAAAAEgCAMAAADi9tZbAAAAw1BMVEX9/v0AAAAAADkAADoAAGUAAGYAAJAAALYAANsAAP4AAP8AOY8AOf4AOf8AZrUAZv4oj/05AAA5AP85OTk5Of85Zv45j9o5j/1lAABlAGVlAP5lAP9lOf5lZjllZv5ltf1ltf6POQCPOTmPOf6POf+PZv6PZv+Pj/+P2/21ZgC1Zv61Zv+1tWW1tf61/v21/v7ajznaj/Paj//atf7a2/3a2/7a/rXa/tra/v39tWX9tf7924/92/79/rX9/tr9/v39/v4okNvBAAAAQXRSTlP///////////////////////////////////////////////////////////////////////////////////8A/45z/jgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAjaSURBVHic7ZwNW9vIFUbX2Ww3Fk1SaIK3TYp2C94K3Gqz7rYlglT+/79q597RF8QfYGys1z7niZGQRtfyHM9I0Z3hmxKk+GbXJwCPA2FiIEwMhImBMDEQJgbCxECYGAgTA2FiIEwMhImBMDEQJgbCxECYGAgTA2FiIEwMhImBMDEQJgbCxECYGAgTo6fCvvwwMNK5u17m89bvcXM8eJGtfJ/L9h3+/5O/5eDN8iNujlcU2DL9FjY4XTvC5VzbSwo9TNjlSqNbprfCrOl8HtjPT1VTsxoNv/uu0H6adS9wavtf/tO3VmUHR9ftrhd/swZXh4qHe6E3nVZ6cxwOuV+2XfGwf0bYPKpatBZwWTW12AJe5rYrNsCjay92WTWMqol4fVbC7uyqfz2t2u/R/xYIu1O2eX8P+/fsM8LmUdXip0FaVeLL/ObY5aS2yzdWxW6OQ3P48sOLLNT0aWiUcY+77u560/hoD7/fb9bCviprK1UZhM2lFfY5XllehK/2abPLm0jVJcYaDCVDX2Z6Oi7u7iqbUPXhC4TdKdusVGUQNpe2S+zU3Jt2l12EvObvCHOFDxBWH46wjdHedDTdl3eJnwanzTWn6R6bfu++sM4uq/AmVFNgsbDO23YPQtgCOrf18aJ/dN296fAWUq13bjruC+vs8hZSh6oP95v0OXeJ3bLtSgRhc+n+x/myrq9L75maLrFe79zW3xfWua3PuqGqw2159N/5wu68besLYfA4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" alt="plot of chunk rxDForest-plot-2"/> </p>
+
+<pre><code class="r">plot(forest[[2]], textArgs = list(col = &quot;blue&quot;, cex = 0.7), plotArgs = list(main = &quot;Decision forest: Tree 2&quot;))
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbAAAAEgCAMAAADi9tZbAAAAzFBMVEX9/v0AAAAAADkAADoAAGUAAGYAALYAANsAAPMAAP4AAP8AOY8AOf4AOf8AZrUAZv4oAJw5AAA5AGU5AP85Of85Zv45j9o5j/1lAABlAGVlAP5lAP9lOf5lZjllZv5ltf1ltf6POQCPOf6POf+PZv6PZv+Pj/6Pj/+Ptf2Ptf6P2/21ZgC1Zv61Zv+1j/61tWW1tf61/v21/v7ajznaj/7aj//atf7a2/3a/rXa/tra/v39tWX9tf7924/92/79/rX9/s/9/tr9/v39/v65wDeiAAAARHRSTlP///////////////////////////////////////////////////////////////////////////////////////8A/8/0ne0AAAAJcEhZcwAACxIAAAsSAdLdfvwAAAknSURBVHic7ZyPf5tEGIel1mnp1lq7NrrNom22KUl0WOM0pZmS//9/kve9OyA1ifkB4b7h+3w2QsJxEJ6743Iv188yAsVnbZ8A2QwKA4PCwKAwMCgMDAoDg8LAoDAwKAwMCgODwsCgMDAoDAwKA4PCwKAwMCgMDAoDg8LAoDAwKAwMCgODwsCgMDAoDAxPhX36NhCihZuOk0XrT3i8CI7i/z3OoDzCPz/qIYOz1TsEwdJD7gW/hQXXW+cwWGh7RaK1hA0kRavGvBUmV+VBr829rWpyRfP3uimvP8W6JriW7ce/uqupV/90Um46+l4qnMvK7K6Jziq19PEi3+Vp2nJFTusozvdaoyg0htfCtAYMbFUzNeA4kU2mAp5ONNnAVgxbRbSGWGFzm9zba1t/T/9aImwubXH8IsFgjaa2OfwWdh9E9iIeJ48XKieSTfqhTfZ4kV9AW/Sv80pptqjr6qazwke5+9N20wn7T1pZcYmKI7SD98IezJ3lKH6wpbyoYbZJfNA6lafM2zLRU3ExvykrsnK7LxE2l7ZYsWke1unLNIjfwgZzws7KTXIT0is/J0wVriHM7b6FsPuWffktTDodRfOlTeJ9cF3cc4rmsWj3ngqrbJLLXGRVJFgurHLY6k73LXfqPRZWdOvNTf90Uu10aA2x65VOx1NhlU1aL1xWbnf5YFEvsZq2XMlW/jzcF34L0yszcNdroC1T0SS69Uq3/qmw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" alt="plot of chunk rxDForest-plot-2"/> </p>
+
+</body>
+
+</html>

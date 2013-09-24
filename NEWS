@@ -1,3 +1,12 @@
+RevoEnhancements 0.0-05 (Release date: 24/09/2013)
+================
+  
+New functionality
+* None
+
+Changes
+* Added vignette for visualiztion of decision trees (rxDTree) and forests (rxDForest)
+
 RevoEnhancements 0.0-04 (Release date: 23/09/2013)
 ================
   
