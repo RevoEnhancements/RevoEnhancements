@@ -20,6 +20,10 @@ Statistical testing
 * KS statistic
 * t-test
 
+Visualisation
+* Decision trees (`plot.rxDTree`)
+* Decision forests (`plot.rxDTree`)
+
 Installation
 ------------
 
