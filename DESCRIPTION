@@ -10,7 +10,7 @@ Copyright: Revolution Analytics
 LazyData: true
 LazyLoad: true
 Description: This is a set of tools to enchance and expand RevoScaleR.
-Version: 0.0-05
+Version: 0.0-06
 URL: https://github.com/RevoEnchancements/RevoEnhancements
 VignetteBuilder: knitr
 Imports:
@@ -22,7 +22,7 @@ Suggests:
     mlbench,
     testthat,
     knitr
-Date: 2013-09-24
+Date: 2013-10-15
 Collate:
     'RevoEnhancements-package.R'
     'formulaExpand.R'
@@ -38,3 +38,4 @@ Collate:
     'rxLinPredError.R'
     'rxAIC.R'
     'rxDTree.R'
+    'rxUnique.R'

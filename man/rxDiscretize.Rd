@@ -49,6 +49,6 @@ x <- rxDataStep(inData = claimsXdf, transforms = discTransforms)
 }
 \seealso{
   Other Data mining functions: \code{\link{rxSample2Df}},
-  \code{\link{rxTreeDiscretize}}
+  \code{\link{rxTreeDiscretize}}, \code{\link{rxUnique}}
 }
 
