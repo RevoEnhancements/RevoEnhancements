@@ -1,7 +1,7 @@
 \docType{package}
-\name{RevoEncancements-package}
-\alias{RevoEncancements-package}
+\name{RevoEnhancements-package}
 \alias{RevoEnhancements}
+\alias{RevoEnhancements-package}
 \title{Adds functionality to RevoScaleR}
 \description{
   This package adds functionality to RevoScaleR. All
@@ -44,11 +44,15 @@
   \item{\code{\link{rxBoxPlot}}}
   \item{\code{\link{rxHexBin}}} }
 
-  Data mining: \itemize{ \item{\code{\link{rxDiscretize}}}
-  \item{\code{\link{rxSample2Df}}}
-  \item{\code{\link{rxTreeDiscretize}}}
-  \item{\code{\link{rxF1score}}}
-  \item{\code{\link{rxLinPredError}}} }
+  Data mining: \itemize{ \item{\code{\link{rxUnique}}} to
+  retrieve unique values in columns
+  \item{\code{\link{rxDiscretize}}} to discretize (bin)
+  values \item{\code{\link{rxSample2Df}}} to sample values
+  to a data frame \item{\code{\link{rxTreeDiscretize}}} to
+  discretize a tree object \item{\code{\link{rxF1score}}}
+  to calculate model precision, sensitivity and F1 score
+  \item{\code{\link{rxLinPredError}}} to calculate
+  prediction error for linear models }
 }
 \author{
   Derek Norton \email{derek.norton@revolutionanalytics.com}

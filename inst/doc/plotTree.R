@@ -1,5 +1,6 @@
 
 ## ----setup---------------------------------------------------------------
+library(RevoScaleR)
 library(RevoEnhancements)
 library(ggplot2)
 rxOptions(
