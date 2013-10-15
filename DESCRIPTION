@@ -22,7 +22,7 @@ Suggests:
     mlbench,
     testthat,
     knitr
-Date: 2013-09-24
+Date: 2013-10-15
 Collate:
     'RevoEnhancements-package.R'
     'formulaExpand.R'
@@ -38,3 +38,4 @@ Collate:
     'rxLinPredError.R'
     'rxAIC.R'
     'rxDTree.R'
+    'rxUnique.R'

@@ -11,6 +11,7 @@ Our package `RevoEnhancements` on [github](https://github.com/RevoEnhancements/R
 First, load the required packages:
 
 ```{r setup}
+library(RevoScaleR)
 library(RevoEnhancements)
 library(ggplot2)
 rxOptions(
@@ -20,7 +21,7 @@ rxOptions(
 ```
 
 
-## Plot decision trees:
+## Plotting decision trees:
 
 The Revolution function to create a decision tree is `rxDTree`.  We use `rxDTree` to fit a partition tree of the `diamonds` data, restricting the maximum tree depth to 3, simply to make the plot stand out better.
 
@@ -62,7 +63,8 @@ plot(fit,
 ```
 
 
-## Plot Decision Forests:
+
+## Plotting Decision Forests:
 
 For comparison we fit a decision forest on the same `diamonds` data.  This creates a `rxDForest` object. This object is a list and the individual trees are contained in the `forest` element.
 
