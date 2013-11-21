@@ -48,7 +48,8 @@ discTransforms <- rxDiscretize(~ cost, data = claimsXdf, type = "freq", nBins = 
 x <- rxDataStep(inData = claimsXdf, transforms = discTransforms)
 }
 \seealso{
-  Other Data mining functions: \code{\link{rxSample2Df}},
+  Other Data mining functions: \code{\link{rxMoments}},
+  \code{\link{rxSample2Df}},
   \code{\link{rxTreeDiscretize}}, \code{\link{rxUnique}}
 }
 

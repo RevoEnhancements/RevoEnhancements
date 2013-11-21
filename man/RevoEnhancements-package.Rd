@@ -38,7 +38,8 @@
   \item{\code{\link{range2formula}}} }
 
   Modeling: \itemize{ \item{\code{\link{rxKS}}}
-  \item{\code{\link{rxTTest}}} }
+  \item{\code{\link{rxTTest}}}
+  \item{\code{\link{rxMoments}}} }
 
   Data visualisation: \itemize{
   \item{\code{\link{rxBoxPlot}}}

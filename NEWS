@@ -1,3 +1,10 @@
+RevoEnhancements 0.0-07 (Release date: 21/11/2013)
+================
+  
+New functionality
+* rxMoments to calculate statistical moments, including skewness and kurtosis
+
+
 RevoEnhancements 0.0-06 (Release date: 15/10/2013)
 ================
   
