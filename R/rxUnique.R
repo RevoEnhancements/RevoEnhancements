@@ -34,7 +34,6 @@ rxUnique <- function(formula, inData=NULL, ...){
     
     ret <- lapply(datalist, function(x)unique(as.character(x)))
     
-    
    .rxModify("vars", ret, FUN=.combine)
     return(NULL)
   }

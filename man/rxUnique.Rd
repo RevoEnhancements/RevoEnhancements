@@ -34,6 +34,7 @@ rxUnique(~state+sex, inData=dataSource)
 }
 \seealso{
   Other Data mining functions: \code{\link{rxDiscretize}},
-  \code{\link{rxSample2Df}}, \code{\link{rxTreeDiscretize}}
+  \code{\link{rxMoments}}, \code{\link{rxSample2Df}},
+  \code{\link{rxTreeDiscretize}}
 }
 
