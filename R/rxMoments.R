@@ -57,11 +57,11 @@ rxMoments <- function(formula, inData=NULL, ...){
                    transformEnvir=new.env(),
                    ...
   )
-  n     <- zz$n
-  sumx  <- zz$sumx
-  sumx2 <- zz$sumx2
-  sumx3 <- zz$sumx3
-  sumx4 <- zz$sumx4
+  n     <- zz[["n"]]
+  sumx  <- zz[["sumx"]]
+  sumx2 <- zz[["sumx2"]]
+  sumx3 <- zz[["sumx3"]]
+  sumx4 <- zz[["sumx4"]]
   
   # m2 : sum(x^2) - 1/n * sum(x)^2
   # m3 : sum(x^3)  -  3/n * sum(x^2)*sum(x)  +  3/n^2 * sum(x)^3  -  1/n^2 * sum(x)^3
@@ -78,7 +78,7 @@ rxMoments <- function(formula, inData=NULL, ...){
   
   # kurtosis
   g2 <- m4 / m2^2 - 3                        # In textbooks
-  G2 <- ((n+1)/g2 + 6) * (n-1)/((n-2)*(n-3)) # In SAS/SPSS
+  G2 <- ((n+1)*g2 + 6) * (n-1)/((n-2)*(n-3)) # In SAS/SPSS
   b2 <- (g2 + 3) * (1 - 1/n)^2 - 3           # In Minitab and BDMP
   
   

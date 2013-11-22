@@ -1,3 +1,15 @@
+RevoEnhancements 0.0-08 (Release date: 22/11/2013)
+================
+  
+New functionality
+* None
+
+Bug fixes:
+* Fixed error in calculation of kurtosis (G2 formulation)
+
+General improvements:
+* Added additional unit tests
+
 RevoEnhancements 0.0-07 (Release date: 21/11/2013)
 ================
   
