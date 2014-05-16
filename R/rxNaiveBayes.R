@@ -19,9 +19,11 @@
 #' hv <- HouseVotes84
 #' hv$V17 <- rnorm(nrow(hv), mean = c(-3, 5)[as.numeric(hv$Class)], sd = c(.5, 2)[as.numeric(hv$Class)])
 #' hv$V18 <- rnorm(nrow(hv), mean = c(2, 15)[as.numeric(hv$Class)], sd = c(4, 1)[as.numeric(hv$Class)])
-#' model1 <- naiveBayes(Class ~ ., data = hv)
+#' if(require(e1071)){
+#'   model1 <- naiveBayes(Class ~ ., data = hv)
+#'   summary(model1)
+#' }
 #' model2 <- rxNaiveBayes(Class ~ ., data = hv)
-#' summary(model1)
 #' summary(model2)
 rxNaiveBayes <- function (formula, data, laplace = 0, ...) {
   require(e1071)
