@@ -11,7 +11,7 @@ LazyData: true
 LazyLoad: true
 Description: This is a set of tools to enchance and expand RevoScaleR.
 Version: 0.0-09
-Date: 2014-05-16
+Date: 2014-05-19
 URL: https://github.com/RevoEnchancements/RevoEnhancements
 VignetteBuilder: knitr
 Roxygen: list(wrap = FALSE)

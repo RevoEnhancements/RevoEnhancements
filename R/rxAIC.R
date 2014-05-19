@@ -1,7 +1,7 @@
 #
-# RevoEnhancements/R/rXAIC by Derek Norton
+# RevoEnhancements/R/rxAIC by Derek Norton
 #
-# Copyright 2013 Revolution Analytics
+# Copyright 2013-2014 Revolution Analytics
 #    
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,17 +16,21 @@
 # limitations under the License.
 
 
-#' Calculates Akaikes Information Criterium (AIC) from a model object.
+#' Calculates Akaike's Information Criterium (AIC) from a model object.
 #' 
 #' @param object Model object, the result of \code{\link[RevoScaleR]{rxLogit}}, \code{\link[RevoScaleR]{rxLinMod}} or \code{\link[RevoScaleR]{rxGlm}}
-#' @param k Multiplier. Defaults to 2, the value for AIC
+#' @param k numeric, the penalty per parameter to be used; the default k = 2 is the classical AIC
 #' @return Numeric
 #' @export
 #' @family Model summary statistics
+#' @seealso \code{\link[stats]{AIC}}, \code{\link[stats]{BIC}}
 #' @examples
 #' library(RevoScaleR)
 #' sampleDataDir <- rxGetOption("sampleDataDir")
-#' working.file <- file.path(sampleDataDir, "AirlineDemoSmall.xdf")
+#' airline <- file.path(sampleDataDir, "AirlineDemoSmall.xdf")
+#' frm <- formulaExpand(ArrDelay ~ ., airline)
+#' model <- rxLinMod(frm, airline)
+#' rxAIC(model)
 rxAIC <- function(object, k = 2) {
   deviance(object) + k * object$df[1]
 }
