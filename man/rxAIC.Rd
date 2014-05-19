@@ -20,6 +20,7 @@ Numeric
 Calculates Akaike's Information Criterium (AIC) from a model object.
 }
 \examples{
+library(RevoScaleR)
 sampleDataDir <- rxGetOption("sampleDataDir")
 airline <- file.path(sampleDataDir, "AirlineDemoSmall.xdf")
 frm <- formulaExpand(ArrDelay ~ ., airline)

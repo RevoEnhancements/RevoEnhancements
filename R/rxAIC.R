@@ -25,6 +25,7 @@
 #' @family Model summary statistics
 #' @seealso \code{\link[stats]{AIC}}, \code{\link[stats]{BIC}}
 #' @examples
+#' library(RevoScaleR)
 #' sampleDataDir <- rxGetOption("sampleDataDir")
 #' airline <- file.path(sampleDataDir, "AirlineDemoSmall.xdf")
 #' frm <- formulaExpand(ArrDelay ~ ., airline)
