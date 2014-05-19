@@ -10,9 +10,11 @@ Copyright: Revolution Analytics
 LazyData: true
 LazyLoad: true
 Description: This is a set of tools to enchance and expand RevoScaleR.
-Version: 0.0-08
+Version: 0.0-09
+Date: 2014-05-16
 URL: https://github.com/RevoEnchancements/RevoEnhancements
 VignetteBuilder: knitr
+Roxygen: list(wrap = FALSE)
 Imports:
     RevoScaleR,
     hexbin,
@@ -23,21 +25,3 @@ Suggests:
     testthat,
     knitr,
     e1071
-Date: 2013-11-22
-Collate:
-    'RevoEnhancements-package.R'
-    'formulaExpand.R'
-    'range2formula.R'
-    'rxBoxPlot.R'
-    'rxDiscretize.R'
-    'rxHexBin.R'
-    'rxTreeDiscretize.R'
-    'rxTTest.R'
-    'rxKS.R'
-    'rxSample.R'
-    'rxF1score.R'
-    'rxLinPredError.R'
-    'rxAIC.R'
-    'rxDTree.R'
-    'rxUnique.R'
-    'rxMoments.R'
